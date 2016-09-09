@@ -4,6 +4,19 @@ ARGUMENTS:
 
 VARIABLES:
 
+rational *angleArray_X = the X angle array
+rational *angleArray_Y - the Y angle array
+rational *angleArray_Z - the Z angle array
+
+natural index - the index that goes through the angle arrays
+natural multipliedHeight - the screen height * HMULT
+natural arrSize - the size of each angle array
+rational hInc - the horizontal increment
+rational vInc - the vertical increment
+rational angleX - the X angle
+rational angleY  - the Y angle
+rational slopeZ - the Z slope
+
 */
 
 
@@ -16,12 +29,13 @@ rational *angleArray_Z = NULL;
 int initAngl()
 {
     natural index = INDEXINIT;
-    natural arrSize = screenWidth * (screenHeight * HMULT);
+    natural multipliedHeight = screenHeight * HMULT;
+    natural arrSize = screenWidth * multipliedHeight;
     rational hInc = ANGLEMAX / screenWidth;
-    rational vInc = ANGLEMAX / screenHeight * 0;
+    rational vInc = -(VRANGE / multipliedHeight);
     rational angleX = ANGLEX_INIT - hInc;
     rational angleY = ANGLEY_INIT - hInc;
-    rational angleZ = ANGLEZ_INIT;
+    rational slopeZ = SLOPEZ_INIT;
 
     if(!(angleArray_X = calloc(arrSize, sizeof(rational))) |
         !(angleArray_Y = calloc(arrSize, sizeof(rational))) |
@@ -33,12 +47,12 @@ int initAngl()
 
     while(++index < arrSize)
     {
-        if((angleX += hInc) >= ANGLEMAX) angleX = 0, angleZ += vInc;
-        if((angleY += hInc) >= ANGLEMAX) angleY = 0;
+        if((angleX += hInc) >= ANGLEMAX) angleX = ZERO, slopeZ += vInc;
+        if((angleY += hInc) >= ANGLEMAX) angleY = ZERO;
 
         angleArray_X[index] = getSlope(angleX);
         angleArray_Y[index] = getSlope(angleY);
-        angleArray_Z[index] = getSlope(angleZ);
+        angleArray_Z[index] = slopeZ;
     }
 
     return none;
