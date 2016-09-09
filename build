@@ -1,0 +1,49 @@
+#!/bin/sh
+
+cpp=cpp
+cc=cc
+ar=ar
+ld=cc
+cppargs="-E -Wall"
+ccargs="-Wall -c --std=c89"
+arargs="-c"
+ldargs="-lSDL"
+buildargs=""
+cppext=".i"
+ccext=".o"
+includearg="-I"
+outputarg="-o"
+addarg="-q"
+targetarg="-T"
+mainobj="main.o"
+bin="bin/arr"
+render="render"
+includes="$includearg common/include $includearg render/include \
+    $includearg io/include $includearg io/sdl/include"
+if [ ! -e "bin" ]; then mkdir "bin"; fi
+
+rm common/*$cppext common/*$ccext render/*$cppext render/*$ccext io/*$cppext \
+    io/*$ccext $mainobj bin/*
+
+for var in $@; do
+    if [ $var = "clean" ]; then
+        exit
+    else
+        export $var;
+    fi
+done
+
+for file in common/*.c render/*.c io/*.c io/sdl/*.c; do
+    echo $cpp $cppargs $includes \
+        "$file" $outputarg "$file$cppext" | tee /dev/stderr | sh;
+done
+
+for file in common/*$cppext render/*$cppext io/*$cppext io/sdl/*$cppext; do
+    echo $cc $ccargs $file $outputarg $file$ccext | tee /dev/stderr | sh;
+done
+
+for file in common/*$ccext  render/*$ccext io/*$ccext io/sdl/*$ccext; do
+    echo $ar $arargs $mainobj $addarg $file | tee /dev/stderr | sh
+done
+
+echo $ld $ldargs $mainobj $outputarg $bin | tee /dev/stderr | sh;
