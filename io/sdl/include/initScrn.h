@@ -1,4 +1,4 @@
-/* dintScrn.h - includes all the files needed by dintScrn.c
+/* initScrn.h - includes files needed by initScrn.c
 
 ENUMS:
 
@@ -10,4 +10,5 @@ MACROS:
 
 */
 
+#include <grphTyps.h>
 #include <SDL/SDL.h>
