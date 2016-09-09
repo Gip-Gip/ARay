@@ -5,9 +5,9 @@ cc=cc
 ar=ar
 ld=cc
 cppargs="-E -Wall"
-ccargs="-Wall -c --std=c89"
+ccargs="-g -Wall -c --std=c89"
 arargs="-c"
-ldargs="-lSDL"
+ldargs="-g -lSDL"
 buildargs=""
 cppext=".i"
 ccext=".o"
@@ -23,7 +23,7 @@ includes="$includearg common/include $includearg render/include \
 if [ ! -e "bin" ]; then mkdir "bin"; fi
 
 rm common/*$cppext common/*$ccext render/*$cppext render/*$ccext io/*$cppext \
-    io/*$ccext $mainobj bin/*
+    io/*$ccext io/sdl/*$cppext io/sdl/*$ccext $mainobj bin/*
 
 for var in $@; do
     if [ $var = "clean" ]; then
