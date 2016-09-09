@@ -1,1 +1,11 @@
+/* foo.h - what it contains
 
+ENUMS:
+
+TYPEDEFS:
+
+DEFINITIONS:
+
+MACROS:
+
+*/
