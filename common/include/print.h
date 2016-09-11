@@ -17,7 +17,10 @@ LPUTC - prints a character to both the log file and stderror
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <stdarg.h>
+#include <types.h>
 
 extern FILE *logFile;
 
@@ -25,4 +28,5 @@ extern FILE *logFile;
 
 #define PRINT_STYLDELM '%'
 #define PRINT_STYLSTR 's'
+#define PRINT_STYLNATR 'n'
 #define PRINT_STYLPREV '<'

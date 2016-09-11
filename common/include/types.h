@@ -11,9 +11,12 @@ natural - natural numbers
 real - real numbers(signed)
 rational - rational numbers(double)
 byte - a single byte
+string - a string of characters
+character - a single character of a string
 mapunit - a single map unit
 bool - flag type
 arg - command line argument
+vEntry - config file variable entry
 
 DEFINITIONS:
 
@@ -32,6 +35,7 @@ typedef long int real;
 typedef double rational;
 typedef char byte;
 typedef byte* string;
+typedef byte character;
 typedef byte mapunit;
 typedef mapunit* map;
 typedef enum {
@@ -40,6 +44,7 @@ typedef enum {
     neither,
 } bool;
 typedef enum {
+    arg_confFile,
     arg_help,
     arg_logFile,
     arg_overwrite,
@@ -53,4 +58,15 @@ typedef enum {
     zHitP,
     zHitN,
 } hit;
+typedef enum {
+    vt_natural,
+    vt_string,
+} vType;
+typedef struct
+{
+    string name;
+    vType type;
+    bool freeable;
+    void *var;
+} vEntry;
 #endif

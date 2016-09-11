@@ -14,6 +14,8 @@ STRALLOC - the minimum size of a string
 UNIT_STR - size of a single character in a string
 SPACE - the space character in string form
 SPACESZ - the size of a single space character
+NEWLINE - the newline character
+F_NATURAL - the formatting for a natural number
 
 MACROS:
 
@@ -30,4 +32,6 @@ MACROS:
 #define UNIT_STR sizeof(char)
 #define SPACE " "
 #define SPACESZ UNIT_STR
+#define NEWLINE '\n'
+#define F_NATURAL "%lu"
 #endif

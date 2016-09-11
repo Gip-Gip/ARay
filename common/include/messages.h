@@ -30,3 +30,5 @@ extern string genExample();
                    gargv[argn], gExample(ARGS_GETARG(arg_overwrite),argn - 1)
 #define MSG_NOMAP "ERROR: No map specified!\n"
 #define MSG_BADFLETCHER "ERROR: Bad fletcher16 checksum!\n"
+#define MSG_BADENTRY "WARNING(On line %n): No variable with the name \"%s\"\n",\
+                     lineNum, buffer
