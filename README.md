@@ -14,7 +14,7 @@ current features include:
 
  * SDL screen writing
  * Sorted code
- * Map loading
+ * Map/config loading
 
 Future features include:
 
@@ -47,9 +47,9 @@ I feel like this is very importiant, as it would suck for every one.
 
 **DONT**:
 
- * Submit code in any other language than C89(ANSI C), the only exception being
-build scripts.
- * Program utilities for maps/images/etc. when the formats are not finished
+ * Submit code in any other language than C89(ANSI C 1989), the only exception
+being build scripts.
+ * Program utilities for maps/images/etc when the formats are not finished
 
 ### Code structure
 
