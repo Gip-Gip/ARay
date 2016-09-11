@@ -7,7 +7,7 @@ char *argv[] - the arguments provided from the commandline
 
 VARIABLES:
 
-string mapname - the name of the map being played
+string mapName - the name of the map being played
 FILE *logFile - the logfile
 bool overwrite - a flag that determines whether we overwrite files or not
 
@@ -15,7 +15,8 @@ bool overwrite - a flag that determines whether we overwrite files or not
 
 #include <main.h>
 
-string mapname = NULL;
+string mapName = NULL;
+string confName = NULL;
 FILE *logFile = NULL;
 bool overwrite = false;
 
@@ -38,7 +39,7 @@ int main(int argc, char *argv[])
             case(arg_overwrite):
                 overwrite = true;
                 break;
-            case(arg_logFile):
+            case(arg_logFile): case(arg_confFile):
                 break;
             default:
                 switch(getArg(argv[argn - 1]))
@@ -52,21 +53,32 @@ int main(int argc, char *argv[])
 
                         logFile = fopen(argv[argn], "wb");
                         break;
+                    case(arg_confFile):
+                        confName = argv[argn];
+                        break;
                     default:
-                        mapname = argv[argn];
+                        mapName = argv[argn];
                         break;
                 }
                 break;
         }
     }
 
-    if(!mapname)
+    if(confName && !freopen(confName, READMODE, stdin))
+    {
+        perror(MSG_PERROR);
+        return errno;
+    }
+
+    if(getConfg(stdin)) return err_unknown;
+
+    if(!mapName)
     {
         print(MSG_NOMAP);
         return err_nomap;
     }
 
-    if(!freopen(mapname, READMODE, stdin))
+    if(!freopen(mapName, READMODE, stdin))
     {
         perror(MSG_PERROR);
         return errno;
