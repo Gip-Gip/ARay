@@ -6,7 +6,7 @@
 
 ARay is an attempt at a first-person 360° 3d engine, using C89 and a few arrays.
 
-### What is the state of ARay?
+### The state of ARay
 
 ARay is currently in a VERY early phase; it can't even render texturless blocks
 in a single frame yet, due to my(Gip-Gip's) terrible debugging skills. It's
@@ -25,11 +25,11 @@ Future features include:
 screen)
  * Windows compatability
 
-### What needs to be fixed?
+### Things that need to be fixed
 
  * Renderer source code
 
-### How can I help?
+### How you can help
 
 I would appreciate help in many ways. As always, people who contribute go inside
 of AUTHORS.TXT (it will be created when I'm not the only one contributing).
