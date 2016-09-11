@@ -12,6 +12,7 @@ char *args[] - holds all the arguments
 
 string args[] =
 {
+    "-c", "--config", "set the config file",
     "-h", "--help", "displays this message and exits",
     "-l", "--log", "sets the logfile",
     "-y", "--overwrite", "overwrites files without complaining",
