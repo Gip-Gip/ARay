@@ -29,6 +29,16 @@ screen)
 
  * Renderer source code
 
+### Building ARay
+
+First, you need SDL, and you can aquire that by
+
+ * Running `sudo apt-get install libsdl-dev` on Ubuntu/Debian
+ * Building the source from the SDL website(ARay uses SDL 1.2, not SDL 2)
+
+After you have downloaded the source, change into the master directory
+(aray-master if you downloaded from git) and run `./build`
+
 ### How you can help
 
 I would appreciate help in many ways. As always, people who contribute go inside
