@@ -19,7 +19,8 @@ void print(char *format, ...)
 {
     va_list arglist;
     string history;
-    bool freeHistory = false;
+    bool freeHistory = false, verboseActive = false;
+    character chr[] = {0, 0};
     natural num = 1;
 
     va_start(arglist, format);
@@ -35,25 +36,42 @@ void print(char *format, ...)
                     free(history);
                 }
 
-                print(history = va_arg(arglist, string));
+                if(verbose || !verboseActive)
+                    print(history = va_arg(arglist, string));
                 break;
             case(PRINT_STYLNATR):
                 if(freeHistory) free(history);
 
                 num = va_arg(arglist, natural);
                 history =
-                    calloc((num?floor(log10(num)):STRALLOC) + STRALLOC,
-                    sizeof(character));
+                    calloc((num?floor(log10(num)):STRALLOC) +
+                    (STRALLOC * PRINT_NCORR), sizeof(character));
                 sprintf(history, F_NATURAL, num);
-                print(history);
+                if(verbose || !verboseActive) print(history);
 
                 freeHistory = true;
                 break;
+            case(PRINT_STYLCHAR):
+                if(freeHistory)
+                {
+                    freeHistory = false;
+                    free(history);
+                }
+
+                /* Since va promotes chars to ints... */
+                *chr = va_arg(arglist, int);
+
+                history = chr;
+                if(verbose || !verboseActive) print(history);
+                break;
+            case(PRINT_STYLVERB):
+                verboseActive = !verboseActive;
+                break;
             case(PRINT_STYLPREV):
-                print(history);
+                if(verbose || !verboseActive) print(history);
                 break;
         }
-        else LPUTC(*format);
+        else if(verbose || !verboseActive) LPUTC(*format);
 
         format ++;
     }

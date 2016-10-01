@@ -30,14 +30,15 @@ MACROS:
 
 #ifndef TYPES
 #define TYPES NULL
-typedef unsigned long int natural;
-typedef long int real;
-typedef double rational;
-typedef char byte;
+typedef unsigned int natural;
+typedef int real;
+typedef float rational;
+typedef unsigned char byte;
 typedef byte* string;
-typedef byte character;
+typedef char character;
 typedef byte mapunit;
 typedef mapunit* map;
+typedef byte * image;
 typedef enum {
     false,
     true,
@@ -47,6 +48,9 @@ typedef enum {
     arg_confFile,
     arg_help,
     arg_logFile,
+    arg_buildIn,
+    arg_buildOut,
+    arg_verbose,
     arg_overwrite,
     arg_map,
 } arg;

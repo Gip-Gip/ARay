@@ -23,6 +23,7 @@ LPUTC - prints a character to both the log file and stderror
 #include <types.h>
 
 extern FILE *logFile;
+extern bool verbose;
 
 #define LPUTC(chr) fputc(chr, stderr); if(logFile) fputc(chr, logFile);
 
@@ -30,3 +31,6 @@ extern FILE *logFile;
 #define PRINT_STYLSTR 's'
 #define PRINT_STYLNATR 'n'
 #define PRINT_STYLPREV '<'
+#define PRINT_STYLVERB 'v'
+#define PRINT_STYLCHAR 'c'
+#define PRINT_NCORR 2

@@ -17,8 +17,10 @@ bool overwrite - a flag that determines whether we overwrite files or not
 
 string mapName = NULL;
 string confName = NULL;
+string gzReadMode = "rb";
 FILE *logFile = NULL;
 bool overwrite = false;
+bool verbose = false;
 
 extern rational r_getSlope(rational);
 
@@ -39,7 +41,11 @@ int main(int argc, char *argv[])
             case(arg_overwrite):
                 overwrite = true;
                 break;
-            case(arg_logFile): case(arg_confFile):
+            case(arg_verbose):
+                verbose = true;
+                break;
+            case(arg_logFile): case(arg_confFile): case(arg_buildIn):
+            case(arg_buildOut):
                 break;
             default:
                 switch(getArg(argv[argn - 1]))
@@ -70,7 +76,7 @@ int main(int argc, char *argv[])
         return errno;
     }
 
-    if(getConfg(stdin)) return err_unknown;
+    //if(getConfg(stdin)) return err_unknown;
 
     if(!mapName)
     {
@@ -78,13 +84,7 @@ int main(int argc, char *argv[])
         return err_nomap;
     }
 
-    if(!freopen(mapName, READMODE, stdin))
-    {
-        perror(MSG_PERROR);
-        return errno;
-    }
-
-    if(getMap(stdin)) return err_unknown;
+    if(!getMap(mapName)) return err_unknown;
 
     initScrn();
 
@@ -95,6 +95,8 @@ int main(int argc, char *argv[])
     SDL_Delay(5000);
 
     dintScrn();
+
+    print("%vVerbose Only %c%v Not verbose", 'O');
 
     return 0;
 }

@@ -29,6 +29,15 @@ extern string genExample();
 #define MSG_EXISTS "ERROR: \"%s\" already exists! Run \"%s\" to overwrite\n", \
                    gargv[argn], gExample(ARGS_GETARG(arg_overwrite),argn - 1)
 #define MSG_NOMAP "ERROR: No map specified!\n"
-#define MSG_BADFLETCHER "ERROR: Bad fletcher16 checksum!\n"
 #define MSG_BADENTRY "WARNING(On line %n): No variable with the name \"%s\"\n",\
                      lineNum, buffer
+#define MSG_GZERR "ERROR: zlib: %s\n", gzReturn
+#define MSG_LOADGMAP \
+"INFO: Loading map \"%s\"%v with the diminsions %nx%nx%n%v\n", in, mwidth, \
+mheight, mdepth
+#define MSG_LOADDMAP \
+"INFO: \"%s\" has been loaded%v. Memory allocation adds up to %n bytes%v\n", \
+in, mwidth * mheight * mdepth + tAllocSum
+#define MSG_LOADDTEX \
+"%vINFO: Texture #%n has been loaded, with the diminsions %nx%n\n", \
+index, twidth, theight

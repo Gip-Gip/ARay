@@ -11,29 +11,76 @@ VARIABLES:
 
 #include <getMap.h>
 
-int getMap(FILE *file)
+int getMap(string in)
 {
-    natural index = INDEXINIT;
+    natural mwidth, mheight, mdepth, twidth, theight, textureCount,
+    index = INDEXINIT, tAllocSum = ZERO;
+    string gzReturn;
+    int gzRetNum;
+    gzFile inGZ = gzopen(in, gzReadMode);
 
-    FLETCHER16_INIT();
+    txtrInit();
 
-    if(!(ARRAY_INIT3D(READBYTE(file), READBYTE(file), READBYTE(file))))
+    if(!inGZ)
     {
         perror(MSG_PERROR);
         return errno;
     }
 
-    while(++index < ARRAY_LENGTH)
+    mwidth = gzgetc(inGZ) + IAM_NUMCORR;
+    mheight = gzgetc(inGZ) + IAM_NUMCORR;
+    mdepth = gzgetc(inGZ) + IAM_NUMCORR;
+    textureCount = gzgetc(inGZ) + IAM_NUMCORR;
+
+    if((gzReturn = gzerror(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
     {
-        ARRAY_ACCESS(index) = READBYTE(file);
-        FLETCHER16_ADD(ARRAY_ACCESS(index));
+        print(MSG_GZERR);
+        return errno;
     }
 
-    if(fletcherA != READBYTE(file) || fletcherB != READBYTE(file))
+    if(!ARRAY_INIT3D(mwidth, mheight, mdepth))
     {
-        printf(MSG_BADFLETCHER);
-        return err_badFletcher;
+        perror(MSG_PERROR);
+        return errno;
     }
+
+    print(MSG_LOADGMAP);
+
+    while(++index < textureCount)
+    {
+        twidth = gzgetc(inGZ) + IAM_NUMCORR;
+        theight = gzgetc(inGZ) + IAM_NUMCORR;
+
+        if(!TEXTURE_ADDENTRY(index, twidth, theight))
+        {
+            perror(MSG_PERROR);
+            return errno;
+        }
+
+        gzread(inGZ, textures[index], twidth * theight * IAM_IMGDEPTH);
+
+        if((gzReturn = gzerror(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
+        {
+            print(MSG_GZERR);
+            return errno;
+        }
+
+        tAllocSum += twidth * theight * IAM_IMGDEPTH;
+
+        print(MSG_LOADDTEX);
+    }
+
+    gzread(inGZ, array, mwidth * mheight * mdepth);
+
+    if((gzReturn = gzerror(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
+    {
+        print(MSG_GZERR);
+        return errno;
+    }
+
+    print(MSG_LOADDMAP);
+
+    gzclose(inGZ);
 
     return none;
 }

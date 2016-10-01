@@ -14,3 +14,8 @@ MACROS:
 #include <fileIO.h>
 #include <messages.h>
 #include <fletcher.h>
+#include <zlib.h>
+#include <texture.h>
+
+extern string gzReadMode;
+extern void txtrInit();
