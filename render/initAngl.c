@@ -32,7 +32,7 @@ int initAngl()
     natural multipliedHeight = screenHeight * HMULT;
     natural arrSize = screenWidth * multipliedHeight;
     rational hInc = ANGLEMAX / screenWidth;
-    rational vInc = -(VRANGE / multipliedHeight);
+    rational vInc = (VRANGE / multipliedHeight);
     rational angleX = ANGLEX_INIT - hInc;
     rational angleY = ANGLEY_INIT - hInc;
     rational slopeZ = SLOPEZ_INIT;

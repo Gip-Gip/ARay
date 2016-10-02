@@ -20,7 +20,7 @@ extern rational playerX;
 extern rational playerY;
 extern rational playerZ;
 
-extern void getTextr(hit, rational, rational, natural, natural);
+extern void getPixel(hit, rational, rational, natural, mapunit);
 extern rational *angleArray_X;
 extern rational *angleArray_Y;
 extern rational *angleArray_Z;

@@ -32,7 +32,7 @@ int getConfg(FILE *file)
     {
         if(*preBuff == COMMENT)
         {
-            while(getchar() != NEWLINE);
+            while(getchar() != NEWLINE && !feof(file));
             lineNum ++;
         }
 

@@ -13,17 +13,14 @@ void getPixel(hit side, rational coord1, rational coord2, natural index,
 {
     texture -= 1;
 
-    printf("%f", coord1);
-
-    /*PUTPIXEL(index,
+    PUTPIXEL(index,
         TEXTURE_ACCESS_R_XY(texture,
-            R2N(coord1 * tex_width[texture]),
-            R2N(coord2 * tex_height[texture])),
+            R2N((coord1 * tex_width[texture])),
+            R2N((coord2 * tex_height[texture]))) >> side,
         TEXTURE_ACCESS_G_XY(texture,
-            R2N(coord1 * tex_width[texture]),
-            R2N(coord2 * tex_height[texture])),
+            R2N((coord1 * tex_width[texture])),
+            R2N((coord2 * tex_height[texture]))) >> side,
         TEXTURE_ACCESS_B_XY(texture,
-            R2N(coord1 * tex_width[texture]),
-            R2N(coord2 * tex_height[texture])));
-            */
+            R2N((coord1 * tex_width[texture])),
+            R2N((coord2 * tex_height[texture]))) >> side);
 }

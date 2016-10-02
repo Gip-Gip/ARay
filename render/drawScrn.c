@@ -20,38 +20,34 @@ void drawScrn()
     rational rayX = playerX;
     rational rayY = playerY;
     rational rayZ = playerZ;
-    mapunit wall = 0;
+    mapunit wall = AIR;
 
-    for(;++index < screenWidth * screenHeight;
-        rayX = playerX, rayY = playerY, rayZ = playerZ)
+    for(wall = 0;++index < screenWidth * screenHeight;wall = 0)
     {
-        for(;ARRAY_ACCESS3D(
-            R2N(rayX), R2N(rayY), R2N(rayZ)) == AIR; wall = AIR)
+        while(wall == AIR)
         {
-            if(AIR != (wall = ARRAY_ACCESS3D(
-                R2N((rayX += angleArray_X[index])), R2N(rayY), R2N(rayZ))))
+            if((wall = ARRAY_ACCESS3D(R2N((rayX += angleArray_X[index])), R2N(rayY), R2N(rayZ))) != AIR)
             {
-                if(angleArray_X[index] > 0)
-                    getTextr(xHitP, rayY, rayZ, index, wall);
-                else getTextr(xHitN, rayY, rayZ, index, wall);
+                if(angleArray_X[index] >= 0) getPixel(xHitP, RFRACT(rayY), RFRACT(rayZ), index, wall);
+                else getPixel(xHitP, RFRACT(rayY), RFRACT(rayZ), index, wall);
             }
 
-            else if(AIR != (wall = ARRAY_ACCESS3D(
-                R2N(rayX), R2N((rayY += angleArray_Y[index])), R2N(rayZ))))
+            else if((wall = ARRAY_ACCESS3D(R2N(rayX), R2N((rayY += angleArray_Y[index])), R2N(rayZ))) != AIR)
             {
-                if(angleArray_Y[index] > 0)
-                    getTextr(yHitP, rayX, rayZ, index, wall);
-                else getTextr(yHitN, rayX, rayZ, index, wall);
+                if(angleArray_Y[index] >= 0) getPixel(yHitP, RFRACT(rayX), RFRACT(rayZ), index, wall);
+                else getPixel(yHitN, RFRACT(rayX), RFRACT(rayZ), index, wall);
             }
 
-            else if(AIR != (wall = ARRAY_ACCESS3D(
-                R2N(rayX), R2N(rayY), R2N((rayZ += angleArray_Z[index])))))
+            else if((wall = ARRAY_ACCESS3D(R2N(rayX), R2N(rayY), R2N((rayZ += angleArray_Z[index])))) != AIR)
             {
-                if(angleArray_Z[index] > 0)
-                    getTextr(zHitP, rayX, rayY, index, wall);
-                else getTextr(zHitN, rayX, rayY, index, wall);
+                if(angleArray_Z[index] >= 0) getPixel(zHitP, RFRACT(rayX), RFRACT(rayY), index, wall);
+                else getPixel(zHitN, RFRACT(rayX), RFRACT(rayY), index, wall);
             }
         }
+
+        rayX = playerX;
+        rayY = playerY;
+        rayZ = playerZ;
     }
 
     REFRESH_SCREEN();

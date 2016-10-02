@@ -8,6 +8,6 @@ VARIABLES:
 
 #include <common.h>
 
-rational playerX = 2.5;
-rational playerY = 2.5;
-rational playerZ = 1;
+rational playerX = 5.5;
+rational playerY = 5.5;
+rational playerZ = 2.5;

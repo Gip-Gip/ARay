@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
         return errno;
     }
 
-    //if(getConfg(stdin)) return err_unknown;
+    if(confName && getConfg(stdin)) return err_unknown;
 
     if(!mapName)
     {
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
         return err_nomap;
     }
 
-    if(!getMap(mapName)) return err_unknown;
+    if(getMap(mapName)) return err_unknown;
 
     initScrn();
 
@@ -105,8 +105,6 @@ int main(int argc, char *argv[])
     SDL_Delay(5000);
 
     dintScrn();
-
-    print("%vVerbose Only %c%v Not verbose", 'O');
 
     return 0;
 }
