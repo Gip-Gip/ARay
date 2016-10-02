@@ -55,11 +55,11 @@ typedef enum {
     arg_map,
 } arg;
 typedef enum {
+    zHitP,
     xHitP,
     xHitN,
     yHitP,
     yHitN,
-    zHitP,
     zHitN,
 } hit;
 typedef enum {
