@@ -32,7 +32,7 @@ int getMap(string in)
     mdepth = gzgetc(inGZ) + IAM_NUMCORR;
     textureCount = gzgetc(inGZ) + IAM_NUMCORR;
 
-    if((gzReturn = gzerror(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
+    if((gzReturn = GZERROR(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
     {
         print(MSG_GZERR);
         return errno;
@@ -59,7 +59,7 @@ int getMap(string in)
 
         gzread(inGZ, textures[index], twidth * theight * IAM_IMGDEPTH);
 
-        if((gzReturn = gzerror(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
+        if((gzReturn = GZERROR(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
         {
             print(MSG_GZERR);
             return errno;
@@ -72,7 +72,7 @@ int getMap(string in)
 
     gzread(inGZ, array, mwidth * mheight * mdepth);
 
-    if((gzReturn = gzerror(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
+    if((gzReturn = GZERROR(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
     {
         print(MSG_GZERR);
         return errno;

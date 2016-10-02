@@ -33,5 +33,5 @@ MACROS:
 #define SPACE " "
 #define SPACESZ UNIT_STR
 #define NEWLINE '\n'
-#define F_NATURAL "%lu"
+#define F_NATURAL "%u"
 #endif

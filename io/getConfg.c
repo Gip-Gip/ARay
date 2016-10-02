@@ -46,7 +46,7 @@ int getConfg(FILE *file)
             else switch(varType)
             {
                 case(vt_natural):
-                    fscanf(file, F_NATURAL, (natural *)variable);
+                    fgetnum(file, (natural *)variable);
                     break;
                 case(vt_string):
                     varBuff = *((string *)variable);

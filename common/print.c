@@ -18,7 +18,7 @@ natural num - used for natural conversions
 void print(char *format, ...)
 {
     va_list arglist;
-    string history;
+    string history = NULL;
     bool freeHistory = false, verboseActive = false;
     character chr[] = {0, 0};
     natural num = 1;
@@ -68,7 +68,7 @@ void print(char *format, ...)
                 verboseActive = !verboseActive;
                 break;
             case(PRINT_STYLPREV):
-                if(verbose || !verboseActive) print(history);
+                if((verbose || !verboseActive) && history) print(history);
                 break;
         }
         else if(verbose || !verboseActive) LPUTC(*format);

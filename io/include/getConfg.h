@@ -15,6 +15,7 @@ MACROS:
 #include <messages.h>
 
 extern void *getVar();
+extern void fgetnum();
 
 #define EQUDELEM '='
 #define COMMENT '#'
