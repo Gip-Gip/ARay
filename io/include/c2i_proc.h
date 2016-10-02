@@ -25,7 +25,7 @@ extern string gExample();
 extern natural fgetnum();
 extern int ppm_proc();
 extern int csv_proc();
-extern string gzWrite;
+extern string gzWriteMode;
 
 #define C2I_STRTDELM '"'
 #define C2I_ENDDELM '"'

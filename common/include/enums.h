@@ -23,7 +23,10 @@ enum retvals {
     err_unknown,
     err_helpGiven,
     err_nomap,
-    err_badFletcher,
+    err_badMode,
+    err_badPPM,
+    err_badTexCnt,
+    err_eof,
     err_exists,
 };
 #endif

@@ -20,8 +20,10 @@ RFRACT - removes the fractional-part of a rational
 #include <arrAcc.h>
 #include <enums.h>
 
+#define FRACTNUM 0.445
 #define R2N(rat) ((natural) rat)
 #define RFRACT(rat) (rat - R2N(rat))
+#define RR2N(rat) (R2N(rat) + (RFRACT(rat) > FRACTNUM))
 
 extern void print();
 extern string strapp();

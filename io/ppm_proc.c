@@ -3,6 +3,7 @@
 ARGUMENTS:
 
 string inName - the name of the file being read, for debugging purposes
+natural inNum - the number of the texture being written, for debugging purposes
 FILE *in - the file being read
 gzFile *outGZ - the file being written to
 
@@ -21,7 +22,7 @@ int gzRetNum - the return int of GZERROR
 
 #include <ppm_proc.h>
 
-int ppm_proc(string inName, FILE *in, gzFile outGZ)
+int ppm_proc(string inName, natural inNum, FILE *in, gzFile outGZ)
 {
     natural index = INDEXINIT, width, height, dividend, buffer;
     string gzReturn;
@@ -45,8 +46,6 @@ int ppm_proc(string inName, FILE *in, gzFile outGZ)
         return errno;
     }
 
-    print(MSG_PPMLOADED);
-
     for(buffer = READBYTE(in);
         !feof(in) && ++index < width * height * PPM_PXSZ;
         buffer = READBYTE(in))
@@ -59,6 +58,8 @@ int ppm_proc(string inName, FILE *in, gzFile outGZ)
             return errno;
         }
     }
+
+    print(MSG_LOADDPPM);
 
     return none;
 }

@@ -17,6 +17,7 @@ natural mheight - the height of the map
 natural mdepth - the depth of the map
 natural textureCount - the amount of textures in the index
 natural index - the layer of the map that is being written to
+natural texCount - the amount of textures processed, for debugging purposes
 bool reading - when true, the buffer is updated with every byte read from in
 FILE *in - the file being read
 FILE *foo - the file pointer used for secondary files, like PPMs and CSVs
@@ -32,7 +33,7 @@ int c2i_proc(string inName, string outName)
     string buffer = calloc(STRALLOC, sizeof(character)), gzReturn;
     character preBuff[] = {0, 0}, mode = ZERO;
     map mapbuff;
-    natural mwidth, mheight, mdepth, textureCount, index = ZERO;
+    natural mwidth, mheight, mdepth, textureCount, index = ZERO, texCount = 0;
     bool reading = false;
     FILE *in, *foo;
     gzFile outGZ;
@@ -40,13 +41,12 @@ int c2i_proc(string inName, string outName)
 
     if(!overwrite && fopen(outName, READMODE))
     {
-        print(MSG_EXISTS,
-            outName,
-            gExample(ARGS_GETARG(arg_overwrite), FIRSTARG));
+        print(MSG_EXISTS_2);
         return err_exists;
     }
 
-    if(!(in = fopen(inName, READMODE)) || !(outGZ = gzopen(outName, gzWrite)))
+    if(!(in = fopen(inName, READMODE)) ||
+        !(outGZ = gzopen(outName, gzWriteMode)))
     {
         perror(MSG_PERROR);
         return errno;
@@ -93,18 +93,20 @@ int c2i_proc(string inName, string outName)
             switch(mode)
             {
                 case(C2I_IMAGE):
-                    ppm_proc(buffer, foo, outGZ);
+                    ppm_proc(buffer, texCount, foo, outGZ);
                     if(!(textureCount--))
                     {
-                        print(MSG_BADTEXCOUNT);
-                        return err_badTexCount;
+                        print(MSG_BADTEXCNT);
+                        return err_badTexCnt;
                     }
+
+                    texCount ++;
                     break;
                 case(C2I_LAYER):
                     csv_proc(foo, (index * mwidth * mheight) + mapbuff,
                              mwidth, mheight);
 
-                    print(MSG_CSVLOADED);
+                    print(MSG_LOADDCSV);
                     index ++;
                     break;
                 default:
@@ -127,8 +129,8 @@ int c2i_proc(string inName, string outName)
     /* If the # of textures read doesn't equal the given texture count... */
     if(textureCount)
     {
-        print(MSG_BADTEXCOUNT);
-        return err_badTexCount;
+        print(MSG_BADTEXCNT);
+        return err_badTexCnt;
     }
 
     gzwrite(outGZ, mapbuff, mwidth * mheight * mdepth);

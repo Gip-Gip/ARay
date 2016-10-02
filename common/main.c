@@ -18,6 +18,7 @@ bool overwrite - a flag that determines whether we overwrite files or not
 string mapName = NULL;
 string confName = NULL;
 string gzReadMode = "rb";
+string gzWriteMode = "wb9";
 FILE *logFile = NULL;
 bool overwrite = false;
 bool verbose = false;
@@ -27,6 +28,7 @@ extern rational r_getSlope(rational);
 int main(int argc, char *argv[])
 {
     natural argn = ZERO;
+    string buildIn = NULL, buildOut = NULL;
     gargv = argv;
     gargc = argc;
 
@@ -53,7 +55,7 @@ int main(int argc, char *argv[])
                     case(arg_logFile):
                         if(!overwrite && (logFile = fopen(argv[argn], "rb")))
                         {
-                            print(MSG_EXISTS);
+                            print(MSG_EXISTS_1);
                             return err_exists;
                         }
 
@@ -62,6 +64,12 @@ int main(int argc, char *argv[])
                     case(arg_confFile):
                         confName = argv[argn];
                         break;
+                    case(arg_buildIn):
+                        buildIn = argv[argn];
+                        break;
+                    case(arg_buildOut):
+                        buildOut = argv[argn];
+                        break;
                     default:
                         mapName = argv[argn];
                         break;
@@ -69,6 +77,8 @@ int main(int argc, char *argv[])
                 break;
         }
     }
+
+    if(buildIn && buildOut) return c2i_proc(buildIn, buildOut);
 
     if(confName && !freopen(confName, READMODE, stdin))
     {
