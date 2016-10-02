@@ -31,13 +31,14 @@ screen)
 
 ### Building ARay
 
-First, you need SDL, and you can aquire that by
+First you need SDL and zlib, and those libraries can be aquired by
 
- * Running `sudo apt-get install libsdl-dev` on Ubuntu/Debian
- * Building the source from the SDL website(ARay uses SDL 1.2, not SDL 2)
+ * Running `sudo apt-get install libsdl-dev zlib1g-dev` on Ubuntu/Debian
+ * Building the source from their respective websites(ARay uses SDL 1.2, not SDL
+   2)
 
 After you have downloaded the source, change into the master directory
-(aray-master if you downloaded from git) and run `./build`
+(aray-master if you downloaded it from git) and run `./build`
 
 ### How you can help
 
