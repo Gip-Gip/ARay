@@ -50,7 +50,7 @@ int ppm_proc(string inName, natural inNum, FILE *in, gzFile outGZ)
         !feof(in) && ++index < width * height * PPM_PXSZ;
         buffer = READBYTE(in))
     {
-        gzputc(outGZ, RR2N(multiplier * buffer) - IAM_NUMCORR);
+        gzputc(outGZ, RR2N(multiplier * buffer));
 
         if((gzReturn = GZERROR(outGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)
         {
