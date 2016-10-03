@@ -55,12 +55,12 @@ typedef enum {
     arg_map,
 } arg;
 typedef enum {
-    zHitP,
+    zHitN,
     xHitP,
     xHitN,
     yHitP,
     yHitN,
-    zHitN,
+    zHitP,
 } hit;
 typedef enum {
     vt_natural,

@@ -26,22 +26,55 @@ void drawScrn()
     {
         while(wall == AIR)
         {
-            if((wall = ARRAY_ACCESS3D(R2N((rayX += angleArray_X[index])), R2N(rayY), R2N(rayZ))) != AIR)
+            if(
+                (wall = ARRAY_ACCESS3D(
+                    R2N((rayX += angleArray_X[index])),
+                    R2N(rayY),
+                    R2N(rayZ))) != AIR)
             {
-                if(angleArray_X[index] >= 0) getPixel(xHitP, RFRACT(rayY), RFRACT(rayZ), index, wall);
+                if(angleArray_X[index] < 0)
+                    getPixel(
+                        xHitN,
+                        1.0 - RFRACT(rayY),
+                        1.0 - RFRACT(rayZ),
+                        index,
+                        wall);
+
                 else getPixel(xHitP, RFRACT(rayY), RFRACT(rayZ), index, wall);
             }
 
-            else if((wall = ARRAY_ACCESS3D(R2N(rayX), R2N((rayY += angleArray_Y[index])), R2N(rayZ))) != AIR)
+            else if(
+                (wall = ARRAY_ACCESS3D(
+                    R2N(rayX),
+                    R2N((rayY += angleArray_Y[index])),
+                    R2N(rayZ))) != AIR)
             {
-                if(angleArray_Y[index] >= 0) getPixel(yHitP, RFRACT(rayX), RFRACT(rayZ), index, wall);
-                else getPixel(yHitN, RFRACT(rayX), RFRACT(rayZ), index, wall);
+                if(angleArray_Y[index] < 0)
+                    getPixel(
+                        yHitN,
+                        1.0 - RFRACT(rayX),
+                        1.0 - RFRACT(rayZ),
+                        index,
+                        wall);
+
+                else getPixel(yHitP, RFRACT(rayX), RFRACT(rayZ), index, wall);
             }
 
-            else if((wall = ARRAY_ACCESS3D(R2N(rayX), R2N(rayY), R2N((rayZ += angleArray_Z[index])))) != AIR)
+            else if(
+                (wall = ARRAY_ACCESS3D(
+                    R2N(rayX),
+                    R2N(rayY),
+                    R2N((rayZ += angleArray_Z[index])))) != AIR)
             {
-                if(angleArray_Z[index] >= 0) getPixel(zHitP, RFRACT(rayX), RFRACT(rayY), index, wall);
-                else getPixel(zHitN, RFRACT(rayX), RFRACT(rayY), index, wall);
+                if(angleArray_Z[index] < 0)
+                    getPixel(
+                        zHitN,
+                        1.0 - RFRACT(rayX),
+                        1.0 - RFRACT(rayY),
+                        index,
+                        wall);
+
+                else getPixel(zHitP, RFRACT(rayX), RFRACT(rayY), index, wall);
             }
         }
 
