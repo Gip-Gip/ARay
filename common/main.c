@@ -14,6 +14,7 @@ bool overwrite - a flag that determines whether we overwrite files or not
 */
 
 #include <main.h>
+#include <time.h>
 
 string mapName = NULL;
 string confName = NULL;
@@ -29,8 +30,10 @@ int main(int argc, char *argv[])
 {
     natural argn = ZERO;
     string buildIn = NULL, buildOut = NULL;
+    clock_t t;
     gargv = argv;
     gargc = argc;
+
 
     while(++argn < argc)
     {
@@ -100,9 +103,15 @@ int main(int argc, char *argv[])
 
     initAngl();
 
+    t = clock();
+
     drawScrn();
 
-    SDL_Delay(5000);
+    t = clock() - t;
+
+    printf("It took %f MS!", (((double)t)/CLOCKS_PER_SEC) * 1000);
+
+    SDL_Delay(10000);
 
     dintScrn();
 
