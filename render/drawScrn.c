@@ -35,8 +35,8 @@ void drawScrn()
                 if(angleArray_X[index] < 0)
                     getPixel(
                         xHitN,
-                        1.0 - RFRACT(rayY),
-                        1.0 - RFRACT(rayZ),
+                        RFRACT(rayY),
+                        RFRACT(rayZ),
                         index,
                         wall);
 
@@ -52,8 +52,8 @@ void drawScrn()
                 if(angleArray_Y[index] < 0)
                     getPixel(
                         yHitN,
-                        1.0 - RFRACT(rayX),
-                        1.0 - RFRACT(rayZ),
+                        RFRACT(rayX),
+                        RFRACT(rayZ),
                         index,
                         wall);
 
@@ -69,8 +69,8 @@ void drawScrn()
                 if(angleArray_Z[index] < 0)
                     getPixel(
                         zHitN,
-                        1.0 - RFRACT(rayX),
-                        1.0 - RFRACT(rayY),
+                        RFRACT(rayX),
+                        RFRACT(rayY),
                         index,
                         wall);
 
