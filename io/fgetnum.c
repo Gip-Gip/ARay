@@ -19,7 +19,8 @@ int fgetnum(FILE *file, natural *number)
     string buffer = calloc(STRALLOC, sizeof(character));
     character prebuff[] = {0, 0};
 
-    while(!feof(file) && !numchar(READBYTE(file)));
+    while(!feof(file) && !numchar(*prebuff = READBYTE(file)))
+        if(*prebuff == COMMENT) while(!feof(file) && READBYTE(file) != NEWLINE);
 
     fseek(file, -sizeof(character), SEEK_CUR);
 

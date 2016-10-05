@@ -24,50 +24,58 @@ void drawScrn()
 
     for(wall = 0;++index < screenWidth * screenHeight;wall = 0)
     {
+        /* Since the texture coordnates increase up -> down, and the map
+           coordnates increase down -> up, we have to invert the Z texture
+           offset. To do that, we subtract the fractional from 1 (stored inside
+           the macro ICONST for readablility) */
+
         while(wall == AIR)
         {
-            if(
-                (wall = ARRAY_ACCESS3D(
-                    R2N((rayX += angleArray_X[index])),
-                    R2N(rayY),
-                    R2N(rayZ))) != AIR)
+            if((wall = ARRAY_ACCESS3D(
+                R2N((rayX += angleArray_X[index])),
+                R2N(rayY),
+                R2N(rayZ))) != AIR)
             {
-                if(angleArray_X[index] < 0)
-                    getPixel(
-                        xHitN,
-                        RFRACT(rayY),
-                        RFRACT(rayZ),
-                        index,
-                        wall);
+                if(angleArray_X[index] < 0) getPixel(
+                    xHitN,
+                    RFRACT(rayY),
+                    ICONST - RFRACT(rayZ),
+                    index,
+                    wall);
 
-                else getPixel(xHitP, RFRACT(rayY), RFRACT(rayZ), index, wall);
+                else getPixel(
+                    xHitP,
+                    RFRACT(rayY),
+                    ICONST - RFRACT(rayZ),
+                    index,
+                    wall);
             }
 
-            else if(
-                (wall = ARRAY_ACCESS3D(
-                    R2N(rayX),
-                    R2N((rayY += angleArray_Y[index])),
-                    R2N(rayZ))) != AIR)
+            else if((wall = ARRAY_ACCESS3D(
+                R2N(rayX),
+                R2N((rayY += angleArray_Y[index])),
+                R2N(rayZ))) != AIR)
             {
-                if(angleArray_Y[index] < 0)
-                    getPixel(
-                        yHitN,
-                        RFRACT(rayX),
-                        RFRACT(rayZ),
-                        index,
-                        wall);
+                if(angleArray_Y[index] < 0) getPixel(
+                    yHitN,
+                    RFRACT(rayX),
+                    ICONST - RFRACT(rayZ),
+                    index,
+                    wall);
 
-                else getPixel(yHitP, RFRACT(rayX), RFRACT(rayZ), index, wall);
+                else getPixel(yHitP,
+                    RFRACT(rayX),
+                    ICONST - RFRACT(rayZ),
+                    index,
+                    wall);
             }
 
-            else if(
-                (wall = ARRAY_ACCESS3D(
-                    R2N(rayX),
-                    R2N(rayY),
-                    R2N((rayZ += angleArray_Z[index])))) != AIR)
+            else if((wall = ARRAY_ACCESS3D(
+                R2N(rayX),
+                R2N(rayY),
+                R2N((rayZ += angleArray_Z[index])))) != AIR)
             {
-                if(angleArray_Z[index] < 0)
-                    getPixel(
+                if(angleArray_Z[index] < 0)getPixel(
                         zHitN,
                         RFRACT(rayX),
                         RFRACT(rayY),

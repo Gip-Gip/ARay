@@ -15,6 +15,7 @@ MACROS:
 #include <graphics.h>
 
 #define AIR 0
+#define ICONST 1
 
 extern rational playerX;
 extern rational playerY;

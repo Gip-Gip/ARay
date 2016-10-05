@@ -33,7 +33,8 @@ int c2i_proc(string inName, string outName)
     string buffer = calloc(STRALLOC, sizeof(character)), gzReturn;
     character preBuff[] = {0, 0}, mode = ZERO;
     map mapbuff;
-    natural mwidth, mheight, mdepth, textureCount, index = ZERO, texCount = 0;
+    natural mwidth, mheight, mdepth, mplayerX, mplayerY, mplayerZ, textureCount,
+        index = ZERO, texCount = 0;
     bool reading = false;
     FILE *in, *foo;
     gzFile outGZ;
@@ -56,11 +57,19 @@ int c2i_proc(string inName, string outName)
     fgetnum(in, &mwidth);
     fgetnum(in, &mheight);
     fgetnum(in, &mdepth);
+    fgetnum(in, &mplayerX);
+    fgetnum(in, &mplayerY);
+    fgetnum(in, &mplayerZ);
     fgetnum(in, &textureCount);
+
+    print(MSG_LOADGCSV);
 
     gzputc(outGZ, mwidth - IAM_NUMCORR);
     gzputc(outGZ, mheight - IAM_NUMCORR);
     gzputc(outGZ, mdepth - IAM_NUMCORR);
+    gzputc(outGZ, mplayerX - IAM_NUMCORR);
+    gzputc(outGZ, mplayerY - IAM_NUMCORR);
+    gzputc(outGZ, mplayerZ - IAM_NUMCORR);
     gzputc(outGZ, textureCount - IAM_NUMCORR);
 
     if((gzReturn = GZERROR(outGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)

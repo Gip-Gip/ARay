@@ -1,0 +1,30 @@
+# The second testmap
+
+#Width
+10
+#Height
+10
+#Depth
+3
+
+#Player X
+5
+#Player Y
+5
+#Player Z
+1
+
+#Texture Count
+3
+
+#Textures
+I
+"testtex2_1.ppm"
+"testtex2_2.ppm"
+"testtex2_3.ppm"
+
+#Layers
+L
+"testmap2_l1.csv"
+"testmap2_l2.csv"
+"testmap2_l3.csv"

@@ -19,3 +19,4 @@ MACROS:
 
 extern string gzReadMode;
 extern void txtrInit();
+extern rational playerX, playerY, playerZ;

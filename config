@@ -1,4 +1,4 @@
 #Example Config File...
-screenWidth=320
-screenHeight=200
-map="maps/testmap.iam"
+screenWidth=640
+screenHeight=400
+map="maps/testmap2.iam"

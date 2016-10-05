@@ -30,6 +30,9 @@ int getMap(string in)
     mwidth = gzgetc(inGZ) + IAM_NUMCORR;
     mheight = gzgetc(inGZ) + IAM_NUMCORR;
     mdepth = gzgetc(inGZ) + IAM_NUMCORR;
+    playerX = N2R(gzgetc(inGZ) + IAM_NUMCORR) + 0.5;
+    playerY = N2R(gzgetc(inGZ) + IAM_NUMCORR) + 0.5;
+    playerZ = N2R(gzgetc(inGZ) + IAM_NUMCORR) + 0.5;
     textureCount = gzgetc(inGZ) + IAM_NUMCORR;
 
     if((gzReturn = GZERROR(inGZ, &gzRetNum)) && gzRetNum == Z_ERRNO)

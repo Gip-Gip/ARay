@@ -1,4 +1,4 @@
-/* getTextr - gets the pixel of a texture and draws it to the screen
+/* getPixel - gets the pixel of a texture and draws it to the screen
 
 ARGUMENTS:
 

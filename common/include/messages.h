@@ -46,6 +46,9 @@ in, mwidth * mheight * mdepth + tAllocSum
 index, twidth, theight
 #define MSG_LOADDPPM "INFO: Texture #%n has been loaded from PPM \"%s\"\n", \
 inNum, inName
+#define MSG_LOADGCSV \
+"INFO: Building a map %nx%nx%n%v with %n textures & the player @ %n,%n,%n%v\n",\
+mwidth, mheight, mdepth, textureCount, mplayerX, mplayerY, mplayerZ
 #define MSG_LOADDCSV "INFO: Layer #%n has been loaded from PPM \"%s\"\n", \
 index, buffer
 #define MSG_BADMODE "ERROR: Bad csv2iam mode \"%c\"!\n", mode

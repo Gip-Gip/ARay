@@ -13,13 +13,7 @@ MACROS:
 #include <common.h>
 #include <ctype.h>
 #include <messages.h>
+#include <txtIO.h>
 
 extern void *getVar();
-extern void fgetnum();
-
-#define EQUDELEM '='
-#define COMMENT '#'
-#define STRSTART '"'
-#define STREND '"'
-#define ESCDELM '\\'
-#define NLDELEM 'n'
+extern int fgetnum();

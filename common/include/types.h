@@ -32,7 +32,7 @@ MACROS:
 #define TYPES NULL
 typedef unsigned int natural;
 typedef int real;
-typedef float rational;
+typedef double rational;
 typedef unsigned char byte;
 typedef char character;
 typedef character* string;
