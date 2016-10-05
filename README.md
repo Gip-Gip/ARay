@@ -8,18 +8,16 @@ ARay is an attempt at a first-person 360° 3d engine, using C89 and a few arrays
 
 ### The state of ARay
 
-ARay is currently in a VERY early phase; it can't even render texturless blocks
-in a single frame yet, due to my(Gip-Gip's) terrible debugging skills. It's
+ARay is currently in a VERY early phase; it can't even render a single frame yet, due to my(Gip-Gip's) terrible debugging skills. It's
 current features include:
 
  * SDL screen writing
  * Sorted code
- * Map/config loading
+ * Map/texture/config loading
 
 Future features include:
 
  * A working renderer
- * Texture loading
  * Keyboard I/O
  * DOS compatability (it currently compiles under Turbo C without writing to the
 screen)
