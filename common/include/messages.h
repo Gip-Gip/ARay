@@ -26,6 +26,23 @@ extern string genExample();
 #define FIRSTARG 1
 #define PROGNAME gargv[0]
 
+#define MSG_SPLASH \
+"\nARay I.MMXVI rev. 2\n\
+Run \"%s -h\" to get help, \"%< -L\" to get legal info\n\n", PROGNAME
+#define MSG_LICENSE "\n\
+Copyright (c) 2016, Charles Thompson <chmithbiz@gmail.com>\n\
+Permission to use, copy, modify, and/or distribute this software for any \n\
+purpose with or without fee is hereby granted, provided that the above\n\
+copyright notice and this permission notice appear in all copies.\n\
+\n\
+THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n\
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n\
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n\
+SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER\n\
+RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF\n\
+CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN\n\
+CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n\n"
+
 #define MSG_PERROR "ERROR"
 #define MSG_EXISTS_1 "ERROR: \"%s\" already exists! Run \"%s\" to overwrite\n", \
                    gargv[argn], gExample(ARGS_GETARG(arg_overwrite), argn - 1)

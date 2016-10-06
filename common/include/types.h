@@ -48,6 +48,7 @@ typedef enum {
     arg_confFile,
     arg_help,
     arg_logFile,
+    arg_license,
     arg_buildIn,
     arg_buildOut,
     arg_verbose,

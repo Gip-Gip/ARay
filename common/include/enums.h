@@ -22,6 +22,7 @@ enum retvals {
     none,
     err_unknown,
     err_helpGiven,
+    err_licenseGiven,
     err_nomap,
     err_badMode,
     err_badPPM,

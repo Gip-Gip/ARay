@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
     gargv = argv;
     gargc = argc;
 
+    print(MSG_SPLASH);
 
     while(++argn < argc)
     {
@@ -42,6 +43,10 @@ int main(int argc, char *argv[])
             case(arg_help):
                 help();
                 return err_helpGiven;
+                break;
+            case(arg_license):
+                print(MSG_LICENSE);
+                return err_licenseGiven;
                 break;
             case(arg_overwrite):
                 overwrite = true;

@@ -12,11 +12,12 @@ char *args[] - holds all the arguments
 
 string args[] =
 {
-    "-c", "--config", "set the config file",
+    "-c", "--config", "sets the config file",
     "-h", "--help", "displays this message and exits",
-    "-l", "--log", "the logfile",
-    "-Bi", "--build-script", "the build script, if building",
-    "-Bo", "--build-product", "the file that will be written to, if building",
+    "-l", "--log", "sets the logfile",
+    "-L", "--license", "displays the license and exits",
+    "-Bi", "--build-script", "sets the build script, if building",
+    "-Bo", "--build-product", "sets the file that will be written to, if building",
     "-v", "--verbose", "print extra debugging messages",
     "-y", "--overwrite", "overwrites files without complaining",
     NULL,
