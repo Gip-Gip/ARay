@@ -22,7 +22,7 @@ void drawScrn()
     rational rayZ = playerZ;
     mapunit wall = AIR;
 
-    for(wall = 0;++index < screenWidth * screenHeight;wall = 0)
+    for(wall = AIR;++index < screenWidth * screenHeight;wall = AIR)
     {
         /* Since the texture coordnates increase up -> down, and the map
            coordnates increase down -> up, we have to invert the Z texture
@@ -75,14 +75,18 @@ void drawScrn()
                 R2N(rayY),
                 R2N((rayZ += angleArray_Z[index])))) != AIR)
             {
-                if(angleArray_Z[index] < 0)getPixel(
+                if(angleArray_Z[index] < 0) getPixel(
                         zHitN,
                         RFRACT(rayX),
                         RFRACT(rayY),
                         index,
                         wall);
 
-                else getPixel(zHitP, RFRACT(rayX), RFRACT(rayY), index, wall);
+                else getPixel(zHitP,
+                    RFRACT(rayX),
+                    RFRACT(rayY),
+                    index,
+                    wall);
             }
         }
 
