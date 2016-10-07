@@ -104,7 +104,10 @@ int main(int argc, char *argv[])
     }
 
     if(!gzWriteMode) gzWriteMode = WRITEMODE;
+<<<<<<< HEAD
     else print(MSG_GZFLAGS);
+=======
+>>>>>>> d166d0282dddb62f0488955eadffa57e6122efb4
 
     if(buildIn && buildOut) return c2i_proc(buildIn, buildOut);
 
