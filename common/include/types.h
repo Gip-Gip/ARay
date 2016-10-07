@@ -51,6 +51,7 @@ typedef enum {
     arg_license,
     arg_buildIn,
     arg_buildOut,
+    arg_gzWriteFlags,
     arg_verbose,
     arg_overwrite,
     arg_map,

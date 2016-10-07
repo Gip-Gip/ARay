@@ -18,8 +18,8 @@ bool overwrite - a flag that determines whether we overwrite files or not
 
 string mapName = NULL;
 string confName = NULL;
-string gzReadMode = "rb";
-string gzWriteMode = "wb9";
+string gzReadMode = READMODE;
+string gzWriteMode = NULL;
 FILE *logFile = NULL;
 bool overwrite = false;
 bool verbose = false;
@@ -44,19 +44,24 @@ int main(int argc, char *argv[])
                 help();
                 return err_helpGiven;
                 break;
+
             case(arg_license):
                 print(MSG_LICENSE);
                 return err_licenseGiven;
                 break;
+
             case(arg_overwrite):
                 overwrite = true;
                 break;
+
             case(arg_verbose):
                 verbose = true;
                 break;
+
             case(arg_logFile): case(arg_confFile): case(arg_buildIn):
-            case(arg_buildOut):
+            case(arg_buildOut): case(arg_gzWriteFlags):
                 break;
+
             default:
                 switch(getArg(argv[argn - 1]))
                 {
@@ -69,15 +74,27 @@ int main(int argc, char *argv[])
 
                         logFile = fopen(argv[argn], "wb");
                         break;
+
                     case(arg_confFile):
                         confName = argv[argn];
                         break;
+
                     case(arg_buildIn):
                         buildIn = argv[argn];
                         break;
+
                     case(arg_buildOut):
                         buildOut = argv[argn];
                         break;
+
+                    case(arg_gzWriteFlags):
+                        if(gzWriteMode) free(gzWriteMode);
+
+                        gzWriteMode = strapp(
+                            WRITEMODE, argv[argn], false, false);
+
+                        break;
+
                     default:
                         mapName = argv[argn];
                         break;
@@ -85,6 +102,8 @@ int main(int argc, char *argv[])
                 break;
         }
     }
+
+    if(!gzWriteMode) gzWriteMode = WRITEMODE;
 
     if(buildIn && buildOut) return c2i_proc(buildIn, buildOut);
 
