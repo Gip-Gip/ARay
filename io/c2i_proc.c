@@ -62,7 +62,7 @@ int c2i_proc(string inName, string outName)
     fgetnum(in, &mplayerZ);
     fgetnum(in, &textureCount);
 
-    print(MSG_LOADGCSV);
+    print(MSG_LOADGC2I);
 
     gzputc(outGZ, mwidth - IAM_NUMCORR);
     gzputc(outGZ, mheight - IAM_NUMCORR);

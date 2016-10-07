@@ -19,6 +19,7 @@ WRITEBYTE - writes to the specified file with the given byte
 #include <stdio.h>
 
 #define READMODE "rb"
+#define WRITEMODE "wb"
 #define GZERROR (string)gzerror
 
 

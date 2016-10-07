@@ -43,6 +43,8 @@ RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF\n\
 CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN\n\
 CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n\n"
 
+#define MSG_GZFLAGS "%vINFO: the gzflags \"%s\" have been set\n", \
+    gzWriteMode + strlen(WRITEMODE)
 #define MSG_PERROR "ERROR"
 #define MSG_EXISTS_1 "ERROR: \"%s\" already exists! Run \"%s\" to overwrite\n", \
                    gargv[argn], gExample(ARGS_GETARG(arg_overwrite), argn - 1)
@@ -61,12 +63,13 @@ in, mwidth * mheight * mdepth + tAllocSum
 #define MSG_LOADDTEX \
 "%vINFO: Texture #%n has been loaded, with the diminsions %nx%n\n", \
 index, twidth, theight
-#define MSG_LOADDPPM "INFO: Texture #%n has been loaded from PPM \"%s\"\n", \
+#define MSG_LOADDPPM "%vINFO: Texture #%n has been loaded from PPM \"%s\"\n", \
 inNum, inName
-#define MSG_LOADGCSV \
-"INFO: Building a map %nx%nx%n%v with %n textures & the player @ %n,%n,%n%v\n",\
+#define MSG_LOADGC2I \
+"INFO: Building a map with the diminsions %nx%nx%n%v, %n textures,\n\
+and the player at %n,%n,%n%v\n",\
 mwidth, mheight, mdepth, textureCount, mplayerX, mplayerY, mplayerZ
-#define MSG_LOADDCSV "INFO: Layer #%n has been loaded from PPM \"%s\"\n", \
+#define MSG_LOADDCSV "%vINFO: Layer #%n has been loaded from CSV \"%s\"\n", \
 index, buffer
 #define MSG_BADMODE "ERROR: Bad csv2iam mode \"%c\"!\n", mode
 #define MSG_BADTEXCNT "ERROR: Texture count doesn't match the given number\n"
