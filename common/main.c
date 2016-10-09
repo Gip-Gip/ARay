@@ -7,9 +7,16 @@ char *argv[] - the arguments provided from the commandline
 
 VARIABLES:
 
-string mapName - the name of the map being played
-FILE *logFile - the logfile
-bool overwrite - a flag that determines whether we overwrite files or not
+string mapName - the name of the map being loaded
+string confName - the name of the config file
+string gzReadMode - the read mode for gzip
+string gzWriteMode - the write mode for gzip
+FILE *logFile - the file pointer to the logfile
+bool overwrite - the overwrite flag. If set, files will be overwritten
+bool verbose - the verbose flag. If set, output will be verobse
+natural argn - an index that is used to go through the arguments
+string buildIn - the build script. Only used when building maps
+string buildOut - the map being written to. Only used when building maps
 
 */
 
@@ -23,8 +30,6 @@ string gzWriteMode = NULL;
 FILE *logFile = NULL;
 bool overwrite = false;
 bool verbose = false;
-
-extern rational r_getSlope(rational);
 
 int main(int argc, char *argv[])
 {
@@ -104,10 +109,7 @@ int main(int argc, char *argv[])
     }
 
     if(!gzWriteMode) gzWriteMode = WRITEMODE;
-<<<<<<< HEAD
     else print(MSG_GZFLAGS);
-=======
->>>>>>> d166d0282dddb62f0488955eadffa57e6122efb4
 
     if(buildIn && buildOut) return c2i_proc(buildIn, buildOut);
 
@@ -143,5 +145,5 @@ int main(int argc, char *argv[])
 
     dintScrn();
 
-    return 0;
+    return none;
 }
