@@ -4,7 +4,7 @@ ARGUMENTS:
 
 VARIABLES:
 
-rational *angleArray_X = the X angle array
+rational *angleArray_X - the X angle array
 rational *angleArray_Y - the Y angle array
 rational *angleArray_Z - the Z angle array
 

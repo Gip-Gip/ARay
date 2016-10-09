@@ -41,14 +41,14 @@ void drawScrn()
                     RFRACT(rayY),
                     ICONST - RFRACT(rayZ),
                     index,
-                    wall);
+                    wall - TNUMCORR);
 
                 else getPixel(
                     xHitP,
                     RFRACT(rayY),
                     ICONST - RFRACT(rayZ),
                     index,
-                    wall);
+                    wall - TNUMCORR);
             }
 
             else if((wall = ARRAY_ACCESS3D(
@@ -61,13 +61,13 @@ void drawScrn()
                     RFRACT(rayX),
                     ICONST - RFRACT(rayZ),
                     index,
-                    wall);
+                    wall - TNUMCORR);
 
                 else getPixel(yHitP,
                     RFRACT(rayX),
                     ICONST - RFRACT(rayZ),
                     index,
-                    wall);
+                    wall - TNUMCORR);
             }
 
             else if((wall = ARRAY_ACCESS3D(
@@ -80,13 +80,13 @@ void drawScrn()
                         RFRACT(rayX),
                         RFRACT(rayY),
                         index,
-                        wall);
+                        wall - TNUMCORR);
 
                 else getPixel(zHitP,
                     RFRACT(rayX),
                     RFRACT(rayY),
                     index,
-                    wall);
+                    wall - TNUMCORR);
             }
         }
 

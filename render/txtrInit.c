@@ -4,6 +4,10 @@ ARGUMENTS:
 
 VARIABLES:
 
+image *textures - the pointer that holds all the textures used
+natural *tex_width - an array that holds all the texture widths
+natural *tex_height - an array that holds all the texture heights
+
 */
 
 #include <txtrInit.h>

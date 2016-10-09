@@ -2,6 +2,12 @@
 
 ARGUMENTS:
 
+hit side - the side that was hit
+rational coord1 - the x pixel coornates
+rational coord2 - the y pixel coornates
+natural index - the offset of the screen to draw to
+mapunit texture - the texture to read
+
 VARIABLES:
 
 */
@@ -11,8 +17,6 @@ VARIABLES:
 void getPixel(hit side, rational coord1, rational coord2, natural index,
               mapunit texture)
 {
-    texture -= 1;
-
     PUTPIXEL(index,
         TEXTURE_ACCESS_R_XY(texture,
             R2N((coord1 * tex_width[texture])),

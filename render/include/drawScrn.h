@@ -6,6 +6,10 @@ TYPEDEFS:
 
 DEFINITIONS:
 
+AIR - the wall that symbolizes air
+ICONST - the constant used to correct the Z texture offset
+TNUMCORR - the value used when correcting the texture number
+
 MACROS:
 
 */
@@ -16,6 +20,7 @@ MACROS:
 
 #define AIR 0
 #define ICONST 1
+#define TNUMCORR 1
 
 extern rational playerX;
 extern rational playerY;
