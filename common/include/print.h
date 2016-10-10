@@ -6,9 +6,14 @@ TYPEDEFS:
 
 DEFINITIONS:
 
-PRINT_STYLEDELM - the style delemeter
-PRINT_STYLESTR - the style code for a string
-PRINT_STYLESTR - the style code for the previous string
+PRINT_STYLDELM - the style delemeter
+PRINT_STYLSTR - the style code for a string
+PRINT_STYLNATR - the style code for a natural number
+PRINT_STYLPREV - the style code for the previous string
+PRINT_STYLVERB - the style code for marking verbose-only strings
+PRINT_STYLCHAR - the style code for a single character
+PRINT_NCORR - the amount to compensate due to the inaccuracy of number-length
+              detection algorithms
 
 MACROS:
 

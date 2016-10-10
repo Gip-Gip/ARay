@@ -2,6 +2,8 @@
 
 ARGUMENTS:
 
+character chr - the character being checked
+
 VARIABLES:
 
 */

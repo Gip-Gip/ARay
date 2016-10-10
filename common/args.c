@@ -4,7 +4,7 @@ ARGUMENTS:
 
 VARIABLES:
 
-char *args[] - holds all the arguments
+string args[] - holds all the arguments
 
 */
 

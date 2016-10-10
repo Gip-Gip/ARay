@@ -9,6 +9,7 @@ VARIABLES:
 va_list arglist - the variable-argument list
 string history - the previous print
 bool freeHistory - if set, history will be freed
+character chr[] - the buffer used for storing single characters
 natural num - used for natural conversions
 
 */

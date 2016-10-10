@@ -6,10 +6,14 @@ TYPEDEFS:
 
 DEFINITIONS:
 
+FRACTNUM - the number an exponent has to be greater than to round up
+
 MACROS:
 
 R2N - converts a rational to a natural
-RFRACT - removes the fractional-part of a rational
+N2R - converts a natural to a rational
+RINT - removes the interger-part(the decimals left of the decimal point)
+RR2N - rounds and converts rationals to naturals
 
 */
 
@@ -23,8 +27,8 @@ RFRACT - removes the fractional-part of a rational
 #define FRACTNUM 0.445
 #define R2N(rat) ((natural) rat)
 #define N2R(nat) ((rational) nat)
-#define RFRACT(rat) (rat - R2N(rat))
-#define RR2N(rat) (R2N(rat) + (RFRACT(rat) > FRACTNUM))
+#define RINT(rat) (rat - R2N(rat))
+#define RR2N(rat) (R2N(rat) + (RINT(rat) > FRACTNUM))
 
 extern void print();
 extern string strapp();

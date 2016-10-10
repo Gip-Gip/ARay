@@ -6,10 +6,13 @@ TYPEDEFS:
 
 DEFINITIONS:
 
+ARRAY_LENGTH - the length of the array in bytes
+
 MACROS:
 
 ARRAY_INIT3D - initializes the array variable
-ARRAY_ACCESS3D - accesses an entry in the array variable
+ARRAY_ACCESS - accesses an entry in the array variable using 1 diminsion
+ARRAY_ACCESS3D - accesses an entry in the array variable using 3 diminsions
 ARRAY_DEINIT - frees the memory allocated by the array
 
 */

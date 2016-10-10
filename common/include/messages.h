@@ -6,11 +6,27 @@ TYPEDEFS:
 
 DEFINITIONS:
 
+FIRSTARG - the number designated to the first command line argument in argv[]
 PROGNAME - the pointer to the program's name
+
+MSG_SPLASH - the splash message
+MSG_LICENSE - the license
 MSG_PERROR - the perror message
-MSG_EXISTS - the error displayed when a file exists
+MSG_EXISTS_1 - the error displayed when a file exists(version 1, inside main.c)
+MSG_EXISTS_2 - the error displayed when a file exists(version 2, outside main.c)
 MSG_NOMAP - the error displayed when no map is given
-MSG_BADFLETCHER - the error when a fletcher checksum is bad
+MSG_BADENTRY - the error displayed when there is a bad entry in a config file
+MSG_GZERR - the error displayed when zlib encounters an error
+MSG_LOADGMAP - the message displayed when loading a map
+MSG_LOADDMAP - the message displayed when a map has finished loading
+MSG_LOADDTEX - the message displayed when a texture has finished loading
+MSG_LOADDPPM - the message displayed when a PPM has been loaded(when building)
+MSG_LOADGC2I - the message displayed when the process of building a C2I script
+               has started
+MSG_LOADDCSV - the message displayed when a CSV has been loaded(when building)
+MSG_BADMODE - the error displayed when a bad mode is given in a C2I script
+MSG_BADTEXCNT - the error displayed when the number of textures doesn't match
+                the provided amount
 
 MACROS:
 

@@ -4,7 +4,7 @@ ARGUMENTS:
 
 VARIABLES:
 
-index - used to go through the argument array
+natural index - used to go through the argument array
 
 */
 

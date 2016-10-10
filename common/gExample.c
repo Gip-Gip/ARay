@@ -8,6 +8,7 @@ natural before - the argument to place the example argument before
 VARIABLES:
 
 natural argn - an index used to go through an array
+string base - the string that is written to when generating an example
 
 */
 

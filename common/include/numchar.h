@@ -1,10 +1,14 @@
-/* nunchar.h - includes files and defines things needed by numchar.c
+/* numchar.h - includes files and defines things needed by numchar.c
 
 ENUMS:
 
 TYPEDEFS:
 
 DEFINITIONS:
+
+ZERO_CHR - the character for the number 0
+NINE_CHR - the character for the number 9
+NEGITIVE_CHR - the character that signifies a negitive number
 
 MACROS:
 

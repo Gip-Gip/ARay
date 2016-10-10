@@ -2,7 +2,7 @@
 
 ARGUMENTS:
 
-char *str - the string being compared
+string str - the string being compared
 
 VARIABLES:
 
@@ -12,7 +12,7 @@ int index - used for going through the argument array
 
 #include <getArg.h>
 
-arg getArg(char *str)
+arg getArg(string str)
 {
     natural index = ZERO;
 

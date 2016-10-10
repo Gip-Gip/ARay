@@ -38,15 +38,15 @@ void drawScrn()
             {
                 if(angleArray_X[index] < 0) getPixel(
                     xHitN,
-                    RFRACT(rayY),
-                    ICONST - RFRACT(rayZ),
+                    RINT(rayY),
+                    ICONST - RINT(rayZ),
                     index,
                     wall - TNUMCORR);
 
                 else getPixel(
                     xHitP,
-                    RFRACT(rayY),
-                    ICONST - RFRACT(rayZ),
+                    RINT(rayY),
+                    ICONST - RINT(rayZ),
                     index,
                     wall - TNUMCORR);
             }
@@ -58,14 +58,14 @@ void drawScrn()
             {
                 if(angleArray_Y[index] < 0) getPixel(
                     yHitN,
-                    RFRACT(rayX),
-                    ICONST - RFRACT(rayZ),
+                    RINT(rayX),
+                    ICONST - RINT(rayZ),
                     index,
                     wall - TNUMCORR);
 
                 else getPixel(yHitP,
-                    RFRACT(rayX),
-                    ICONST - RFRACT(rayZ),
+                    RINT(rayX),
+                    ICONST - RINT(rayZ),
                     index,
                     wall - TNUMCORR);
             }
@@ -77,14 +77,14 @@ void drawScrn()
             {
                 if(angleArray_Z[index] < 0) getPixel(
                         zHitN,
-                        RFRACT(rayX),
-                        RFRACT(rayY),
+                        RINT(rayX),
+                        RINT(rayY),
                         index,
                         wall - TNUMCORR);
 
                 else getPixel(zHitP,
-                    RFRACT(rayX),
-                    RFRACT(rayY),
+                    RINT(rayX),
+                    RINT(rayY),
                     index,
                     wall - TNUMCORR);
             }

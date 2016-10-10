@@ -6,6 +6,9 @@ TYPEDEFS:
 
 DEFINITIONS:
 
+HELP_USAGE - a message that describes the usage of ARay
+HELP_FORMAT - the print format for each command line argument
+
 MACROS:
 
 */
