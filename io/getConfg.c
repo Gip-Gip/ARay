@@ -7,8 +7,8 @@ FILE *file - the file being read
 VARIABLES:
 
 string buffer - the buffer
-character preBuff - the character before it gets added to the buffer
 string varBuff - the string buffer for variables
+character preBuff - the character before it gets added to the buffer
 bool *freeable - set if the string is freeable
 vType varType - the type of variable being parsed
 void variable - a pointer to the variable being read
@@ -20,9 +20,8 @@ natural lineNum - incremented when the pre-buffer is a newline
 
 int getConfg(FILE *file)
 {
-    string buffer = calloc(STRALLOC, UNIT_STR);
+    string buffer = calloc(STRALLOC, UNIT_STR), varBuff = NULL;
     character preBuff[] = {0, 0};
-    string varBuff = NULL;
     bool *freeable = NULL;
     vType varType;
     void *variable = NULL;
@@ -38,7 +37,7 @@ int getConfg(FILE *file)
 
         else if(*preBuff == NEWLINE) lineNum ++;
 
-        else if(*preBuff == EQUDELEM)
+        else if(*preBuff == EQUDELM)
         {
             if(!(variable = getVar(buffer, &varType, &freeable)))
                 print(MSG_BADENTRY);
@@ -69,7 +68,7 @@ int getConfg(FILE *file)
 
                             switch(*preBuff)
                             {
-                                case(NLDELEM):
+                                case(NLDELM):
                                     *preBuff = NEWLINE;
                                     break;
                                 default:

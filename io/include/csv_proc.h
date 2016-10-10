@@ -14,7 +14,6 @@ MACROS:
 
 */
 
-#include <common.h>
 #include <fileIO.h>
 
 extern bool fgetnum();

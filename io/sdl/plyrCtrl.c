@@ -1,13 +1,17 @@
-/* playerControl - controls the player
+/* plyrCtrl - controls the player
 
 ARGUMENTS:
 
 VARIABLES:
 
+rational playerX - the player's X position
+rational playerY - the player's Y position
+rational playerZ - the player's Z position
+
 */
 
 #include <common.h>
 
-rational playerX = 5;
-rational playerY = 5;
-rational playerZ = 1.5;
+rational playerX;
+rational playerY;
+rational playerZ;

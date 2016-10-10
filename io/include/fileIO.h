@@ -7,6 +7,7 @@ TYPEDEFS:
 DEFINITIONS:
 
 READMODE - the mode used for reading
+WRITEMODE - the mode used for writing
 GERROR - fixed gerror that won't give warnings
 
 MACROS:
@@ -16,7 +17,7 @@ WRITEBYTE - writes to the specified file with the given byte
 
 */
 
-#include <stdio.h>
+#include <common.h>
 
 #define READMODE "rb"
 #define WRITEMODE "wb"

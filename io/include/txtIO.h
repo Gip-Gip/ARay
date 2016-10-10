@@ -6,14 +6,21 @@ TYPEDEFS:
 
 DEFINITIONS:
 
+EQUDELM - the delimiter used to signify a declaration expression
+COMMENT - the character that signifies a comment
+STRSTART - the character that signifies the start of a string
+STREND - the character that signifies the end of a string
+ESCDELM - the delimiter that signifies an escape character
+NLDELM - the escape delimiter that signifies a newline
+
 MACROS:
 
 */
 
 
-#define EQUDELEM '='
+#define EQUDELM '='
 #define COMMENT '#'
 #define STRSTART '"'
 #define STREND '"'
 #define ESCDELM '\\'
-#define NLDELEM 'n'
+#define NLDELM 'n'

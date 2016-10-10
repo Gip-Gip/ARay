@@ -3,9 +3,21 @@
 
 ARGUMENTS:
 
-FILE *file - the filestream being read
+string in - the filename of the map to load
 
 VARIABLES:
+
+natural mwidth - the width of the map
+natural mheight - the height of the map
+natural mdepth - the depth of the map
+natural twidth - the width of the texture being loaded
+natural theight - the height of the texture being loaded
+natural textureCount - the number of textures to load
+natural index - the index used to go through the textures
+natural tAllocSum - the amount of memory allocated for textures
+string gzReturn - the string to print if gzerror gives Z_ERRNO
+int gzRetNum - used for storing the status of gzerror
+gzFile inGZ - the gzFile pointer to the map being read
 
 */
 

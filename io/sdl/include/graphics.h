@@ -6,7 +6,15 @@ TYPEDEFS:
 
 DEFINITIONS:
 
+SDL_REDOFF - the offset in a pixel where the red intensity is stored
+SDL_GRNOFF - the offset in a pixel where the green intensity is stored
+SDL_BLUOFF - the offset in a pixel where the blue intensity is stored
+SDL_PIXELSZ - the size of each pixel(in bytes)
+
 MACROS:
+
+PUTPIXEL - puts a pixel at the screen offset specified
+REFRESH_SCREEN - refreshes the screen
 
 */
 

@@ -4,7 +4,7 @@ ENUMS:
 
 TYPEDEFS:
 
-rgbUnit - a single red, green or blue part of a pixel
+rgbUnit - the size of the red, green and blue components of a pixel
 
 DEFINITIONS:
 

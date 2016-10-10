@@ -10,7 +10,6 @@ MACROS:
 
 */
 
-#include <common.h>
 #include <fileIO.h>
 #include <messages.h>
 #include <fletcher.h>

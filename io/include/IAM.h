@@ -6,7 +6,10 @@ TYPEDEFS:
 
 DEFINITIONS:
 
-IAM_IMGEND - the value used to mark the end of the image index
+IAM_NUMCORR - the amount to correct the numbers, so that 8 bits represent values
+              1-256
+IAM_IMGDEPTH - the depth of each pixel in a texture
+IAM_MAXTEXCOUNT - the maximum amount of textures in an IAM map
 
 MACROS:
 
