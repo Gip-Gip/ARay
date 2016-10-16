@@ -20,6 +20,7 @@ bin="bin/aray"
 render="render"
 includes="$includearg common/include $includearg render/include \
     $includearg io/include $includearg io/sdl/include"
+
 if [ ! -e "bin" ]; then mkdir "bin"; fi
 
 rm common/*$cppext common/*$ccext render/*$cppext render/*$ccext io/*$cppext \
@@ -27,7 +28,7 @@ rm common/*$cppext common/*$ccext render/*$cppext render/*$ccext io/*$cppext \
 
 for var in $@; do
     if [ $var = "clean" ]; then
-        exit
+        exit;
     else
         export $var;
     fi
