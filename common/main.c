@@ -23,6 +23,10 @@ string buildOut - the map being written to. Only used when building maps
 #include <main.h>
 #include <time.h>
 
+extern rational playerX;
+extern rational playerY;
+extern rational playerZ;
+
 string mapName = NULL;
 string confName = NULL;
 string gzReadMode = READMODE;
@@ -33,7 +37,7 @@ bool verbose = false;
 
 int main(int argc, char *argv[])
 {
-    natural argn = ZERO;
+    natural argn = ZERO, i=0;
     string buildIn = NULL, buildOut = NULL;
     clock_t t;
     gargv = argv;
@@ -133,13 +137,70 @@ int main(int argc, char *argv[])
 
     initAngl();
 
-    t = clock();
+    /* Demos */
 
-    drawScrn();
+    if(!strcmp("maps/testmap3.iam", mapName))
+    {
+        while(i++ < 140)
+        {
+            playerY += 0.05;
+            drawScrn();
+        }
 
-    t = clock() - t;
+        while(i++ < 280)
+        {
+            playerX -= 0.05;
+            drawScrn();
+        }
+    }
 
-    printf("It took %f MS!", (((double)t)/CLOCKS_PER_SEC) * 1000);
+    else if(!strcmp("maps/testmap.iam", mapName))
+    {
+        while(i++ < 40)
+        {
+            playerY += 0.05;
+            drawScrn();
+        }
+
+        while(i++ < 60)
+        {
+            playerX -= 0.05;
+            drawScrn();
+        }
+
+        while(i++ < 100)
+        {
+            playerY -= 0.05;
+            drawScrn();
+        }
+
+        while(i++ < 120)
+        {
+            playerZ += 0.05;
+            drawScrn();
+        }
+
+        while(i++ < 160)
+        {
+            playerZ -= 0.05;
+            drawScrn();
+        }
+    }
+
+    else if(!strcmp("maps/testmap2.iam", mapName))
+    {
+        while(i++ < 40)
+        {
+            playerY += 0.05;
+            drawScrn();
+        }
+
+        while(i++ < 80)
+        {
+            playerX -= 0.05;
+            drawScrn();
+        }
+    }
 
     SDL_Delay(10000);
 
