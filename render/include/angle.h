@@ -15,7 +15,7 @@ MACROS:
 
 */
 
-#define ANGLEMAX 8.0
+#define ANGLEMAX 4.0
 #define ANGLEX_INIT 0
-#define ANGLEY_INIT 6
+#define ANGLEY_INIT 3
 #define SLOPEZ_INIT 1
