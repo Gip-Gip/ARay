@@ -20,10 +20,15 @@ void drawScrn()
     rational rayX = playerX;
     rational rayY = playerY;
     rational rayZ = playerZ;
+    rational *U = &rayX;
+    rational *V = &rayY;
+    hit side = xHitP;
     mapunit wall = AIR;
 
     for(wall = AIR;++index < screenWidth * screenHeight;wall = AIR)
     {
+        rayX = playerX, rayY = playerY, rayZ = playerZ;
+
         /* Since the texture coordnates increase up -> down, and the map
            coordnates increase down -> up, we have to invert the Z texture
            offset. To do that, we subtract the fractional from 1 (stored inside
@@ -31,68 +36,57 @@ void drawScrn()
 
         while(wall == AIR)
         {
+            rayZ += angleArray_Z[index];
+
             if((wall = ARRAY_ACCESS3D(
-                R2N((rayX += angleArray_X[index])),
-                R2N(rayY),
-                R2N(rayZ))) != AIR)
+                    R2N(rayX),
+                    R2N(rayY),
+                    R2N(rayZ))) != AIR)
             {
-                if(angleArray_X[index] < 0) getPixel(
-                    xHitN,
-                    RINT(rayY),
-                    ICONST - RINT(rayZ),
-                    index,
-                    wall - TNUMCORR);
+                if(angleArray_Z[index] < 0) side = zHitN;
+                else side = zHitP;
 
-                else getPixel(
-                    xHitP,
-                    RINT(rayY),
-                    ICONST - RINT(rayZ),
-                    index,
-                    wall - TNUMCORR);
+                U = &rayX;
+                V = &rayY;
             }
 
-            else if((wall = ARRAY_ACCESS3D(
-                R2N(rayX),
-                R2N((rayY += angleArray_Y[index])),
-                R2N(rayZ))) != AIR)
-            {
-                if(angleArray_Y[index] < 0) getPixel(
-                    yHitN,
-                    RINT(rayX),
-                    ICONST - RINT(rayZ),
-                    index,
-                    wall - TNUMCORR);
+            /* Increase the ray's X and check for collision */
+            rayX += angleArray_X[index];
 
-                else getPixel(yHitP,
-                    RINT(rayX),
-                    ICONST - RINT(rayZ),
-                    index,
-                    wall - TNUMCORR);
+            if(wall == AIR &&
+                (wall = ARRAY_ACCESS3D(
+                    R2N(rayX),
+                    R2N(rayY),
+                    R2N(rayZ))) != AIR)
+            {
+                if(angleArray_X[index] < 0) side = xHitN;
+                else side = xHitP;
+
+                U = &rayY;
+                V = &rayZ;
             }
 
-            else if((wall = ARRAY_ACCESS3D(
-                R2N(rayX),
-                R2N(rayY),
-                R2N((rayZ += angleArray_Z[index])))) != AIR)
-            {
-                if(angleArray_Z[index] < 0) getPixel(
-                        zHitN,
-                        RINT(rayX),
-                        RINT(rayY),
-                        index,
-                        wall - TNUMCORR);
+            /* Increase the ray's Y */
+            rayY += angleArray_Y[index];
 
-                else getPixel(zHitP,
-                    RINT(rayX),
-                    RINT(rayY),
-                    index,
-                    wall - TNUMCORR);
+            if(wall == AIR &&
+                (wall = ARRAY_ACCESS3D(
+                    R2N(rayX),
+                    R2N(rayY),
+                    R2N(rayZ))) != AIR)
+            {
+
+                if(angleArray_Y[index] < 0) side = yHitN;
+                else side = yHitP;
+
+                U = &rayX;
+                V = &rayZ;
             }
+
+
         }
 
-        rayX = playerX;
-        rayY = playerY;
-        rayZ = playerZ;
+        getPixel(side, RINT(*U), ICONST - RINT(*V), index, wall - TNUMCORR);
     }
 
     REFRESH_SCREEN();
