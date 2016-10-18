@@ -8,6 +8,9 @@ natural index - the index used to go through the screen and the angle arrays
 rational rayX - the ray's x coordnate
 rational rayY - the ray's y coordnate
 rational rayZ - the ray's x coordnate
+rational *U - the texture's X offset
+rational *V - the texture's Y offset
+hit side - the side the ray hit
 mapunit wall - the wall hit by the ray
 
 */

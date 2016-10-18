@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
 
     if(getMap(mapName)) return err_unknown;
 
-    initScrn();
+    initIO();
 
     initAngl();
 

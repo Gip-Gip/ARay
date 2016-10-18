@@ -1,4 +1,4 @@
-/* plyrCtrl - controls the player
+/* initPc - controls the player
 
 ARGUMENTS:
 
@@ -10,11 +10,14 @@ rational playerZ - the player's Z position
 
 */
 
-#include <common.h>
-
-extern screenWidth;
+#include <initPc.h>
 
 rational playerX;
 rational playerY;
 rational playerZ;
-natural playerRot = 640;
+natural playerRot;
+
+void initPc()
+{
+    playerRot = screenWidth;
+}
