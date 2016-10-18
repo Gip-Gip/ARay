@@ -26,6 +26,7 @@ string buildOut - the map being written to. Only used when building maps
 extern rational playerX;
 extern rational playerY;
 extern rational playerZ;
+extern natural playerRot;
 
 string mapName = NULL;
 string confName = NULL;
@@ -147,7 +148,7 @@ int main(int argc, char *argv[])
             drawScrn();
         }
 
-        while(i++ < 280)
+        while(i++ < 440)
         {
             playerX -= 0.05;
             drawScrn();

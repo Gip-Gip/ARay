@@ -14,10 +14,15 @@ VARIABLES:
 
 #include <getPixel.h>
 
+extern natural playerRot;
+extern natural screenWidth;
+
 void getPixel(hit side, rational coord1, rational coord2, natural index,
               mapunit texture)
 {
     side = (side / 2) + 1;
+
+    index = (index + playerRot) % screenWidth + ((index / screenWidth) * screenWidth);
 
     PUTPIXEL(index,
         TEXTURE_ACCESS_R_XY(texture,

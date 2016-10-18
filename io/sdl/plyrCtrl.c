@@ -12,6 +12,9 @@ rational playerZ - the player's Z position
 
 #include <common.h>
 
+extern screenWidth;
+
 rational playerX;
 rational playerY;
 rational playerZ;
+natural playerRot = 640;

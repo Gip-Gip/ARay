@@ -82,8 +82,6 @@ void drawScrn()
                 U = &rayX;
                 V = &rayZ;
             }
-
-
         }
 
         getPixel(side, RINT(*U), ICONST - RINT(*V), index, wall - TNUMCORR);
