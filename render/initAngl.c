@@ -50,8 +50,9 @@ int initAngl()
         if((angleX += hInc) >= ANGLEMAX) angleX = ZERO, slopeZ += vInc;
         if((angleY += hInc) >= ANGLEMAX) angleY = ZERO;
 
-        angleArray_X[index] = getSlope(angleX);
-        angleArray_Y[index] = getSlope(angleY);
+        angleArray_X[index] = sin(angleX);
+        angleArray_Y[index] = cos(angleY);
+
         angleArray_Z[index] = slopeZ;
     }
 

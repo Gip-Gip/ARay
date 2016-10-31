@@ -43,7 +43,7 @@ extern string genExample();
 #define PROGNAME gargv[0]
 
 #define MSG_SPLASH \
-"\nARay I.MMXVI rev. 3\n\
+"\nARay I.MMXVI rev. 4\n\
 Run \"%s -h\" to get help, \"%< -L\" to get legal info\n\n", PROGNAME
 #define MSG_LICENSE "\n\
 Copyright (c) 2016, Charles Thompson <chmithbiz@gmail.com>\n\
