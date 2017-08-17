@@ -17,73 +17,90 @@ mapunit wall - the wall hit by the ray
 
 #include <drawScrn.h>
 
+
 void drawScrn()
 {
     natural index = INDEXINIT;
-    rational rayX = playerX;
-    rational rayY = playerY;
-    rational rayZ = playerZ;
+    natural cutoff;
+    rational divisor, maxDivisor, minDivisor;
+    rational rayX;
+    rational rayY;
+    rational rayZ;
     rational *U = &rayX;
     rational *V = &rayY;
     hit side = xHitP;
     mapunit wall = AIR;
 
+    maxDivisor = (screenWidth > screenHeight ? screenWidth : screenHeight);
+    minDivisor = maxDivisor / 100;
+
     for(wall = AIR;++index < screenWidth * screenHeight;wall = AIR)
     {
-        rayX = playerX, rayY = playerY, rayZ = playerZ;
+        divisor = minDivisor / 10;
+        cutoff = 0;
+        rayX = playerX + angleArray_X[index] / divisor, rayY = playerY + angleArray_Y[index] / divisor, rayZ = playerZ + angleArray_Z[index] / divisor;
 
         /* Since the texture coordnates increase up -> down, and the map
            coordnates increase down -> up, we have to invert the Z texture
            offset. To do that, we subtract the fractional from 1 (stored inside
            the macro ICONST for readablility) */
 
-        while(wall == AIR)
+        while(divisor <= maxDivisor)
         {
-            rayZ += angleArray_Z[index];
+            wall = AIR;
+            rayZ -= angleArray_Z[index] / divisor;
+            rayX -= angleArray_X[index] / divisor;
+            rayY -= angleArray_Y[index] / divisor;
+            divisor *= 10;
 
-            if((wall = ARRAY_ACCESS3D(
-                    R2N(rayX),
-                    R2N(rayY),
-                    R2N(rayZ))) != AIR)
+            while(wall == AIR)
             {
-                if(angleArray_Z[index] < 0) side = zHitN;
-                else side = zHitP;
+                rayZ += angleArray_Z[index] / divisor;
 
-                U = &rayX;
-                V = &rayY;
-            }
+                if((wall = ARRAY_ACCESS3D(
+                        R2N(rayX),
+                        R2N(rayY),
+                        R2N(rayZ))) != AIR)
+                {
+                    if(angleArray_Z[index] < 0) side = zHitN;
+                    else side = zHitP;
 
-            /* Increase the ray's X and check for collision */
-            rayX += angleArray_X[index];
+                    U = &rayX;
+                    V = &rayY;
+                }
 
-            if(wall == AIR &&
-                (wall = ARRAY_ACCESS3D(
-                    R2N(rayX),
-                    R2N(rayY),
-                    R2N(rayZ))) != AIR)
-            {
-                if(angleArray_X[index] < 0) side = xHitN;
-                else side = xHitP;
+                /* Increase the ray's X and check for collision */
+                rayX += angleArray_X[index] / divisor;
 
-                U = &rayY;
-                V = &rayZ;
-            }
+                if(wall == AIR &&
+                    (wall = ARRAY_ACCESS3D(
+                        R2N(rayX),
+                        R2N(rayY),
+                        R2N(rayZ))) != AIR)
+                {
+                    if(angleArray_X[index] < 0) side = xHitN;
+                    else side = xHitP;
 
-            /* Increase the ray's Y */
-            rayY += angleArray_Y[index];
+                    U = &rayY;
+                    V = &rayZ;
+                }
 
-            if(wall == AIR &&
-                (wall = ARRAY_ACCESS3D(
-                    R2N(rayX),
-                    R2N(rayY),
-                    R2N(rayZ))) != AIR)
-            {
+                /* Increase the ray's Y */
+                rayY += angleArray_Y[index] / divisor;
 
-                if(angleArray_Y[index] < 0) side = yHitN;
-                else side = yHitP;
+                if(wall == AIR &&
+                    (wall = ARRAY_ACCESS3D(
+                        R2N(rayX),
+                        R2N(rayY),
+                        R2N(rayZ))) != AIR)
+                {
 
-                U = &rayX;
-                V = &rayZ;
+                    if(angleArray_Y[index] < 0) side = yHitN;
+                    else side = yHitP;
+
+                    U = &rayX;
+                    V = &rayZ;
+                }
             }
         }
 

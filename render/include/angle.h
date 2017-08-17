@@ -15,8 +15,9 @@ MACROS:
 
 */
 
-#define PI 3.14159265
-#define ANGLEMAX (2 * PI)
+
+#define PI 3.141592
+#define ANGLEMAX (2*PI)
 #define ANGLEX_INIT 0
 #define ANGLEY_INIT 0
 #define SLOPEZ_INIT 1

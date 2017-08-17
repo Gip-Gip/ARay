@@ -15,8 +15,8 @@ natural screenHeight - the height of the screen
 
 SDL_Surface *screen = NULL;
 rgbUnit *screenRaw = NULL;
-natural screenWidth = 320;
-natural screenHeight = 200;
+natural screenWidth = 640;
+natural screenHeight = 400;
 
 int initScrn()
 {

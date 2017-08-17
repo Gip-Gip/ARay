@@ -18,10 +18,10 @@ MACROS:
 #include <common.h>
 #include <messages.h>
 #include <angle.h>
-#include <math.h>
 
 #define HMULT 1
 #define VRANGE 2.0
 
+extern rational getSlope(rational);
 extern natural screenWidth;
 extern natural screenHeight;

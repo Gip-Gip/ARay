@@ -25,7 +25,7 @@ RR2N - rounds and converts rationals to naturals
 #include <enums.h>
 
 #define FRACTNUM 0.445
-#define R2N(rat) ((natural) rat)
+#define R2N(rat) ((natural) (rat))
 #define N2R(nat) ((rational) nat)
 #define RINT(rat) (rat - R2N(rat))
 #define RR2N(rat) (R2N(rat) + (RINT(rat) > FRACTNUM))
